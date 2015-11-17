@@ -14,6 +14,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final String[] myDataset = new String[]{"Adam Gucwa", "Alberto Chamorro", "Chanse Strode", "Craig Zheng", "David Bohner", "Eric Clymer", "Jessica Hoffman", "Jon Evans", "Jordan Degner", "Mitchel Pigsley", "Peter Yasi", "Seth Prauner", "Sue Yi", "Zach Ramaekers", "Mike Isman", "Josh Cox"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(getBaseContext());
         recyclerView.setLayoutManager(llm);
+
+        MyAdapter adapter = new MyAdapter(this, myDataset);
+        recyclerView.setAdapter(adapter);
 
     }
 

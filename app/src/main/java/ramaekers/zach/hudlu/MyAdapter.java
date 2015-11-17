@@ -2,6 +2,7 @@ package ramaekers.zach.hudlu;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -18,7 +19,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.my_cardview_layout, parent, false);
+        // set the view's size, margins, paddings and layout parameters
+        MyViewHolder vh = new MyViewHolder(v);
+        return vh;
     }
 
     @Override
