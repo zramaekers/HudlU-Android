@@ -10,7 +10,12 @@
     tools:showIn="@layout/activity_main" tools:context=".MainActivity"
     android:background="#232A31">
 
-    <TextView android:text="Hello Hudl!" android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff" />
+        android:id="@+id/recyclerView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>
