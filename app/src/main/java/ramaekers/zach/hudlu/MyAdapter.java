@@ -10,11 +10,13 @@ import android.widget.TextView;
 /**
  * Created by zach.ramaekers on 11/16/2015.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     String[] myData;
+    OnAdapterInteractionListener myListener;
     public MyAdapter(Context context, String[] data) {
         super();
         myData = data;
+        myListener = (OnAdapterInteractionListener) context;
     }
 
     @Override
@@ -27,13 +29,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.myTextView.setText(myData[position]);
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                myListener.onItemClicked(v, position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return myData.length;
+    }
+
+    public interface OnAdapterInteractionListener {
+        void onItemClicked(View view, int position);
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
